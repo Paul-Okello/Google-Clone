@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Avatar from "../components/Avatar";
 import { MicrophoneIcon, ViewGridIcon } from "@heroicons/react/solid";
+import Body from "../components/Body";
 
 export default function Home() {
   return (
@@ -27,6 +28,7 @@ export default function Home() {
         </div>
       </header>
       {/* Body */}
+      <Body />
       {/* Footer */}
     </div>
   );
