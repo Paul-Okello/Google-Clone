@@ -2,10 +2,11 @@ import Head from "next/head";
 import Avatar from "../components/Avatar";
 import { MicrophoneIcon, ViewGridIcon } from "@heroicons/react/solid";
 import Body from "../components/Body";
+import Footer from "../components/Footer";
 
 export default function Home() {
   return (
-    <div>
+    <div className="flex flex-col items-center justify-center h-screen">
       <Head>
         <title>Google Clone</title>
         <link rel="icon" href="/favicon.ico" />
@@ -30,6 +31,7 @@ export default function Home() {
       {/* Body */}
       <Body />
       {/* Footer */}
+      <Footer />
     </div>
   );
 }
