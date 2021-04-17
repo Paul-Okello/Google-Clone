@@ -11,7 +11,7 @@ function Header() {
 
   const search = (e) => {
     e.preventDefault();
-    const r = (term = searchInputRef.current.value);
+    const term = searchInputRef.current.value;
     if (!term) return;
 
     router.push(`/search?term=${term}`);
