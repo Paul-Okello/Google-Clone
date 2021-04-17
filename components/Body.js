@@ -1,45 +1,49 @@
+import { MicrophoneIcon, SearchIcon } from "@heroicons/react/solid";
 import Image from "next/image";
-import { MicrophoneIcon } from "@heroicons/react/solid";
-import { SearchIcon } from "@heroicons/react/outline";
 import { useRef } from "react";
 import { useRouter } from "next/router";
 
-function Body() {
-  const searchInputRef = useRef(null);
+const Body = () => {
+  const inputRef = useRef(null);
   const router = useRouter();
+
   const search = (e) => {
     e.preventDefault();
 
-    const term = searchInputRef.current.value;
+    const term = inputRef.current.value;
+
     if (!term) return;
-    router.push(`/search?term=${term}`);
+
+    router.push(`/search?query=${term}`);
   };
+
   return (
-    <form className="flex flex-col items-center mt-44 flex-grow w-4/5">
+    <form className="flex flex-col items-center mt-44 flex-grow w-4/5 m-auto">
       <Image
         src="https://www.google.co.uk/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"
-        height={100}
         width={300}
+        height={100}
       />
-      <div className="flex w-full mt-5 hover:shadow-lg focus-within:shadow-lg max-w-md rounded-full border-gray-200 px-5 py-3 items-center sm:max-w-xl lg:max-w-2xl">
+      {/* Don't forget to add domain link in next.config.js file, else it will show error */}
+
+      <div className="flex w-full mt-5 hover:shadow-lg focus-within:shadow-lg max-w-md rounded-full border border-gray-200 px-5 py-3 items-center sm:max-w-lg lg:max-w-2xl">
         <SearchIcon className="h-5 mr-3 text-gray-500" />
         <input
-          ref={searchInputRef}
           type="text"
-          className="focus:outline-none flex-grow"
+          className="focus: outline-none flex-grow"
+          ref={inputRef}
         />
         <MicrophoneIcon className="h-5" />
       </div>
-      <div className="flex flex-col w-1/2 space-y-2 justify-center mt-8 sm:space-y-0 sm:flex-row">
-        <button onClick={search} class="btn">
+
+      <div className="flex flex-col w-1/2 space-y-2 justify-center mt-8 sm:space-y-0 sm:flex-row sm:space-x-4">
+        <button className="btn" onClick={search}>
           Google Search
         </button>
-        <button onClick={search} class="btn">
-          I'm feeling lucky.
-        </button>
+        <button className="btn">I'm Feeling Lucky</button>
       </div>
     </form>
   );
-}
+};
 
 export default Body;
